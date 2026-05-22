@@ -210,6 +210,8 @@ Once you've made your changes and verified them locally:
 5. **Open a Pull Request** on the main repository.
 6. **PR Review**:
    * Include a description of what you did.
+   * **Attach screenshots or video recordings** of your UI or styling changes (before/after comparison if possible) in your pull request description.
    * **Tag `@anurag3407`** in your pull request description/comments to notify the administrator for review and merge.
 
 Thank you for building with us! Happy Coding! 💻🚀
+
