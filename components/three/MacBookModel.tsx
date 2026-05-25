@@ -2,7 +2,7 @@
 
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { useGLTF } from '@react-three/drei';
+import { useGLTF, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 
 const MODEL_PATH = '/assets/macbook.glb';
@@ -15,9 +15,13 @@ interface MacBookModelProps {
 export default function MacBookModel({ scrollProgress, isMobile }: MacBookModelProps) {
   const groupRef = useRef<THREE.Group>(null);
   const gltf = useGLTF(MODEL_PATH);
+  const texture = useTexture('/images/graffiti/hero-bg.svg');
 
-  const clonedScene = useMemo(() => {
+    const clonedScene = useMemo(() => {
     const clone = gltf.scene.clone();
+
+    // The model uses a single texture atlas for the body and screen,
+    // so we can't easily override just the screen material here.
 
     // Center the geometry
     const box = new THREE.Box3().setFromObject(clone);
