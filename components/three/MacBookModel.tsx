@@ -1,8 +1,8 @@
 'use client';
 
-import { useRef, useMemo } from 'react';
-import { useFrame, useLoader } from '@react-three/fiber';
-import { useGLTF } from '@react-three/drei';
+import { useRef, useMemo, useLayoutEffect } from 'react';
+import { useFrame } from '@react-three/fiber';
+import { useGLTF, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 
 const MODEL_PATH = '/assets/macbook.glb';
@@ -15,9 +15,9 @@ interface MacBookModelProps {
 export default function MacBookModel({ scrollProgress, isMobile }: MacBookModelProps) {
   const groupRef = useRef<THREE.Group>(null);
   const gltf = useGLTF(MODEL_PATH);
-  const logoTexture = useLoader(THREE.TextureLoader, '/images/logo.png');
+  const logoTexture = useTexture('/images/logo.png');
 
-  useMemo(() => {
+  useLayoutEffect(() => {
     logoTexture.colorSpace = THREE.SRGBColorSpace;
     logoTexture.minFilter = THREE.LinearFilter;
     logoTexture.magFilter = THREE.LinearFilter;
