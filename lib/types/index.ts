@@ -99,6 +99,11 @@ export interface Developer {
   socials: SocialLinks;
   contributions: string[];
   techStack: string[];
+  imageTransform?: {
+    x?: number;
+    y?: number;
+    scale?: number;
+  };
 }
 
 /** Navigation link */
